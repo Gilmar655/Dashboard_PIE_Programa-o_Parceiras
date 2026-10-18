@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081b3b">
+  <meta name="description" content="Painel operacional PIE para acompanhar programações, aprovações, parceiras e PowerON.">
+  <title>Painel PIE | Programação das Parceiras</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#inicio" class="brand" aria-label="Início do painel PIE">
+        <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand-copy"><strong>PIE <span>CONTROL</span></strong><small>Programação de intervenções</small></span>
+      </a>
+      <div class="header-right">
+        <div class="clock-wrap" aria-label="Relógio online atualizado em tempo real">
+          <span class="live-dot"></span>
+          <div>
+            <strong id="clock">--:--:--</strong>
+            <small id="clockDate">--/--/----</small>
+          </div>
+        </div>
+        <img src="assets/enel-brasil-logo.png" alt="Enel Brasil" class="enel-logo">
+      </div>
+    </div>
+  </header>
+  <main id="inicio" class="layout">
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> CONTROLE OPERACIONAL · MÉDIA TENSÃO</p>
+        <h1>Programação <span>PIE</span></h1>
+        <p class="hero-description">Monitoramento das programações das parceiras, liberações, pendências de aprovação e situação PowerON.</p>
+        <div class="hero-info"><span id="periodInfo">Período da programação</span><span id="baseInfo">Base de dados carregada</span></div>
+      </div>
+      <div class="hero-side"><span>VISÃO CONSOLIDADA</span><strong id="heroTotal">65</strong><small>programações na base</small><span class="hero-led">DADOS DA PLANILHA PIE</span></div>
+    </section>
+
+    <section class="section-card filebar" aria-label="Importação e exportação da base">
+      <div class="filebar-description"><div class="file-icon">⇄</div><div><strong>Gerenciamento da base</strong><small id="sourceInfo">Base original da planilha · importação disponível</small></div></div>
+      <div class="file-actions">
+        <label class="btn btn-primary" for="fileInput"><span>↥</span> Importar Excel / CSV</label>
+        <input id="fileInput" type="file" accept=".xlsx,.csv,.xlsm" hidden>
+        <button id="exportExcel" class="btn btn-ghost" type="button">↧ Exportar Excel</button>
+        <button id="exportCsv" class="btn btn-ghost" type="button">↧ Exportar CSV</button>
+        <button id="exportPublish" class="btn btn-ghost" type="button" title="Gera arquivo programacoes.js para substituir a base publicada no GitHub">⬡ Base para GitHub</button>
+        <button id="resetBase" class="btn btn-light" type="button" title="Descartar importações locais e restaurar dados originais">Restaurar</button>
+      </div>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <section class="section-card filter-panel" aria-label="Filtros de programação">
+      <div class="section-head"><div><p class="section-kicker">01 / EXPLORAR</p><h2>Filtros de programação</h2></div><button id="clearFilters" class="text-button" type="button">⟲ Limpar todos os filtros</button></div>
+      <div class="filter-grid">
+        <label class="field field-wide"><span>Pesquisa geral</span><input id="search" type="search" placeholder="Projeto, número PowerON, equipamento, descrição..." autocomplete="off"></label>
+        <label class="field"><span>Data inicial</span><input id="dateFrom" type="date"></label>
+        <label class="field"><span>Data final</span><input id="dateTo" type="date"></label>
+        <label class="field"><span>Contratada</span><select id="filterContractor"></select></label>
+        <label class="field"><span>Região</span><select id="filterRegion"></select></label>
+        <label class="field"><span>Tipo de serviço</span><select id="filterType"></select></label>
+        <label class="field"><span>Situação PowerON</span><select id="filterPower"></select></label>
+        <label class="field"><span>Semana</span><select id="filterWeek"></select></label>
+        <label class="field"><span>Equipamento</span><select id="filterEquipment"></select></label>
+        <label class="field"><span>Tipo de intervenção</span><select id="filterIntervention"></select></label>
+        <label class="field"><span>Dia da semana</span><select id="filterWeekend"><option value="">Todos os dias</option><option value="weekend">Sábados e domingos</option><option value="weekday">Segunda a sexta</option></select></label>
+      </div>
+      <div class="quick-filter"><span class="quick-label">STATUS</span><div class="quick-group" id="statusChips"></div></div>
+      <div id="activeFilters" class="active-filters" aria-live="polite"></div>
+    </section>
+
+    <section class="kpi-grid" id="kpiGrid" aria-label="Indicadores principais"></section>
+
+    <section class="section-group" id="visao-geral">
+      <div class="section-heading"><div><p class="section-kicker">02 / VISÃO GRÁFICA</p><h2>Indicadores e tendências</h2><p>Os gráficos respondem aos filtros. Clique nas barras e segmentos para detalhar.</p></div><span id="filteredCount" class="counter-badge">65 registros selecionados</span></div>
+      <div class="chart-grid">
+        <article class="section-card chart-card span-8"><div class="chart-top"><div><h3>Distribuição diária das programações</h3><small>Quantidade por data e situação da programação</small></div><span class="chart-tag">CRONOLOGIA</span></div><div class="chart-scroll"><div id="chartDaily" class="chart-host"></div></div></article>
+        <article class="section-card chart-card span-4"><div class="chart-top"><div><h3>Status das programações</h3><small>Distribuição proporcional</small></div><span class="chart-tag">STATUS</span></div><div id="chartStatus" class="chart-host"></div></article>
+        <article class="section-card chart-card span-7"><div class="chart-top"><div><h3>Contratadas por status</h3><small>Volume das parceiras por etapa</small></div><span class="chart-tag">PARCEIRAS</span></div><div id="chartContractor" class="chart-host"></div></article>
+        <article class="section-card chart-card span-5"><div class="chart-top"><div><h3>Tipo de serviço</h3><small>Distribuição das atividades programadas</small></div><span class="chart-tag">SERVIÇOS</span></div><div id="chartServices" class="chart-host"></div></article>
+        <article class="section-card chart-card span-7"><div class="chart-top"><div><h3>Programações por semana</h3><small>Semanas iniciadas na segunda-feira</small></div><span class="chart-tag">SEMANAL</span></div><div id="chartWeekly" class="chart-host"></div></article>
+        <article class="section-card chart-card span-5"><div class="chart-top"><div><h3>Situação do PowerON</h3><small>Registro do número ou situação informada</small></div><span class="chart-tag">POWERON</span></div><div id="chartPower" class="chart-host"></div></article>
+      </div>
+      <div class="legend" id="chartLegend"></div>
+    </section>
+
+    <section id="alertas" class="section-group"><div class="section-heading"><div><p class="section-kicker">03 / AUDITORIA</p><h2>Pontos de atenção</h2><p>Ocorrências calculadas diretamente a partir da base atualmente filtrada.</p></div></div><div id="alerts" class="alert-grid"></div></section>
+
+    <section class="section-card table-section" id="base-dados">
+      <div class="section-head"><div><p class="section-kicker">04 / BASE COMPLETA</p><h2>Programações detalhadas</h2><p class="table-subtitle" id="tableCaption">Todas as colunas originais da planilha, com classificação PowerON adicional.</p></div><div class="table-tools"><label class="field compact"><span>Linhas por página</span><select id="pageSize"><option value="25">25</option><option value="50">50</option><option value="all">Todas</option></select></label><button id="printReport" class="btn btn-ghost" type="button">⎙ Imprimir</button></div></div>
+      <div class="table-scroll" role="region" aria-label="Base completa das programações" tabindex="0"><table id="dataTable"><thead id="tableHead"></thead><tbody id="tableBody"></tbody></table></div>
+      <div class="table-foot"><span id="paginationInfo"></span><div id="paginationControls" class="page-controls"></div></div>
+    </section>
+
+    <footer class="footer"><div><strong>PIE CONTROL</strong> <span>• Painel de apoio ao acompanhamento operacional</span></div><div>Fonte: aba PIE da planilha fornecida · <span id="footerData">65 registros</span></div><p>As informações representam a programação e os status registrados na base. Não comprovam execução concluída nem substituem a confirmação operacional. Em um repositório público, todos os dados publicados ficam acessíveis a terceiros.</p></footer>
+  </main>
+  <script src="dados/programacoes.js"></script>
+  <script src="assets/excel.js"></script>
+  <script src="assets/charts.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

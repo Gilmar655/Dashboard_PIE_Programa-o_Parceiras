@@ -1,0 +1,66 @@
+﻿Projeto;Descrição do Projeto;Data Programacao;Status Programacao;Tipo Intervencao;Numero PowerON;Equipamentos;Regiao;Horario Inicio;Horario Fim;Contratada;Duração (h);Visível
+DAC/A.ABC.26.00361;Alteração de Carga;2026-10-20;Liberado para Execução;PIE;16909852;035ET077870;ABC;10:00;14:00;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DAC/A.ABC.26.00360;Alteração de Carga;2026-10-20;Liberado para Execução;PIE;16909852;035ET077870;ABC;10:00;14:00;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DMP/A.LES.22.02023;Rede Compacta;2026-10-20;Liberado para Execução;PIE;16971731;356ET093220;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DAC/A.LES.24.00552;Afastamento de Rede (Clientes);2026-10-24;Liberado para Execução;PIE;DEVOLVIDO;356ET014765;LES;10:00;14:00;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DAC/A.LES.24.00551;Afastamento de Rede (Clientes);2026-10-24;Liberado para Execução;PIE;DEVOLVIDO;356ET014765;LES;10:00;14:00;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DAC/A.LES.24.00553;Afastamento de Rede (Clientes);2026-10-24;Liberado para Execução;PIE;DEVOLVIDO;356ET014765;LES;10:00;14:00;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DAC/A.LES.26.01126;Ligação Nova;2026-10-22;Liberado para Execução;PIE;16936764;356ET162584;LES;09:30;13:30;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DMP/A.LES.26.01978;Rede Compacta;2026-10-22;Liberado para Execução;PIE;RESOLVIDO;356ET006621;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.03035;Rede Compacta;2026-10-22;Liberado para Execução;PIE;RESOLVIDO;356ET006621;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.01050;Rede Compacta;2026-10-27;Liberado para Execução;PIE;Resolvido;ET-072312;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DAC/A.LES.26.01189;Migração para Média Tensão;2026-11-08;Liberado para Documentação;PIE;;353ET037961;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.LES.24.07670;Reforma de Rede Secundaria RTRI;2026-10-26;Liberado para Execução;PIE;16939216;353ET006456;LES;09:50;13:50;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DMP/A.LES.22.01917;Rede Compacta;2026-10-28;Pendente de Aprovação;PIE;;356ET093226;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.22.01894;Rede Compacta;2026-10-28;Pendente de Aprovação;PIE;;356ET093226;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.23.01130;Rede Compacta;2026-10-29;Liberado para Execução;PIE;16979041;010CF016849;LES;10:30;14:30;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.ABC.26.00475;Alteração de Carga;2026-10-27;Liberado para Execução;PIE;16939280;010ET041994;ABC;10:30;14:30;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DMP/A.LES.23.01127;Rede Compacta;2026-10-29;Liberado para Execução;PIE;16979041;010CF016849;LES;10:30;14:30;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.LES.23.01129;Rede Compacta;2026-10-29;Liberado para Execução;PIE;16979041;010CF016849;LES;10:30;14:30;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.LES.26.01039;Rede Compacta;2026-10-29;Liberado para Execução;PIE;RESOLVIDO;356ET160992;LES;10:00;13:00;Start Engenharia (Área 8B, 9  e 11) NEC;3,0;1
+DMP/A.LES.21.16603;Rede Compacta;2026-10-29;Pendente de Aprovação;PIE;;356ET093228;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.22.01894;Rede Compacta;2026-10-29;Pendente de Aprovação;PIE;;356ET093228;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.24.04905;Rede Compacta;2026-10-31;Liberado para Execução;PIE;RESOLVIDO;353ET013232;LES;10:00;14:00;ZZOUT-Start Área 8B+11 (Contrato Antigo);4,0;1
+DAC/A.LES.26.00849;Alteração de Carga;2026-11-03;Liberado para Documentação;PIE;;353ET012209;LES;10:00;16:00;Start Engenharia (Área 8B, 9  e 11) NEC;6,0;1
+DMP/A.LES.26.01045;Rede Compacta;2026-10-31;Liberado para Execução;PIE;RESOLVIDO;356ET054211;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.01046;Rede Compacta;2026-10-31;Liberado para Execução;PIE;RESOLVIDO;356ET054211;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.21.16603;Rede Compacta;2026-11-02;Liberado para Execução;PIE;DEVOLVIDO;356ET092974;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.22.01992;Rede Compacta;2026-11-03;Liberado para Documentação;PIE;;356ET093246;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.22.02023;Rede Compacta;2026-11-03;Liberado para Documentação;PIE;;356ET093246;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.01968;Rede Compacta;2026-11-05;Liberado para Documentação;PIE;;356ET160537;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.21.13536;Rede Compacta;2026-11-06;Liberado para Documentação;PIE;;356ET161406;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.21.17522;Rede Compacta;2026-11-06;Liberado para Documentação;PIE;;356ET161406;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.25.01147;Rede Compacta;2026-11-06;Liberado para Documentação;PIE;;010ET056930;LES;10:30;14:30;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DMP/A.LES.26.01048;Rede Compacta;2026-11-09;Liberado para Documentação;PIE;;356ET160992;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DAC/A.LES.26.00600;Afastamento de Rede (Clientes);2026-10-28;Liberado para Execução;PIE;DEVOLVIDO;353BF058433;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00588;Afastamento de Rede (Clientes);2026-10-28;Liberado para Execução;PIE;DEVOLVIDO;353BF058433;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00586;Afastamento de Rede (Clientes);2026-10-28;Liberado para Execução;PIE;DEVOLVIDO;353BF058433;LES;10:00;14:30;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,5;1
+DAC/A.LES.26.01103;Ligação Nova;2026-11-06;Liberado para Documentação;PIE;;356ET068100;LES;10:10;14:10;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DAC/A.LES.26.01158;Ligação Nova;2026-11-05;Liberado para Documentação;PIE;;353BF053883;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.LES.26.01049;Rede Compacta;2026-11-09;Liberado para Documentação;PIE;;356ET160992;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.24.05264;Substituição de Poste em Mau Estado;2026-11-11;Liberado para Documentação;PIE;;010ET220437;LES;10:00;14:00;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DAC/A.LES.25.00749;Alteração de Carga;2026-11-11;Liberado para Documentação;PIE;;353ET053245;LES;00:30;04:30;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DAC/A.LES.26.01203;Ligação Nova;2026-11-08;Liberado para Documentação;PIE;;353ET171440;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.LES.26.03366;Rede Compacta;2026-11-10;Liberado para Documentação;PIE;;356BF041141;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.01962;Rede Compacta;2026-11-10;Liberado para Documentação;PIE;;356BF041141;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.03105;Rede Compacta;2026-11-11;Pendente de Aprovação;PIE;;356ET052591;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.03104;Rede Compacta;2026-11-11;Pendente de Aprovação;PIE;;356ET052591;LES;10:00;14:00;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.03156;Rede Compacta;2026-11-12;Pendente de Aprovação;PIE;;356ET059090;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.26.03105;Rede Compacta;2026-11-12;Pendente de Aprovação;PIE;;356ET059090;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.21.17598;Rede Compacta;2026-11-13;Pendente de Aprovação;PIE;;356BF140256;LES;10:30;14:30;Engelmig (Área 11) NEC e UPS;4,0;1
+DMP/A.LES.21.16945;Rede Compacta;2026-11-15;Liberado para Documentação;PIE;;010IP012003;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.LES.23.01107;Rede Compacta;2026-11-15;Liberado para Documentação;PIE;;010IP012003;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.ABC.26.00544;Rede Compacta;2026-11-19;Pendente de Aprovação;PIE;;010ET010168;ABC;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.25.01239;Migração para Média Tensão;2026-11-16;Liberado para Documentação;PIE;;ET-026958;LES;10:10;14:10;Start Engenharia (Área 8B, 9  e 11) NEC;4,0;1
+DMP/A.ABC.26.00545;Rede Compacta;2026-11-21;Pendente de Aprovação;PIE;;010ET027178;ABC;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.ABC.26.00542;Rede Compacta;2026-11-22;Pendente de Aprovação;PIE;;010ET006479;ABC;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00598;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00597;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00596;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00595;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00587;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00599;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00600;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00601;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DAC/A.LES.26.00602;Afastamento de Rede (Clientes);2026-11-14;Pendente de Aprovação;PIE;;353ET021648;LES;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
+DMP/A.ABC.26.00536;Rede Compacta;2026-11-22;Pendente de Aprovação;PIE;;010ET006479;ABC;10:00;14:00;Conecta Obras Extras (Área 8B, 9 e 11) NEC;4,0;1
