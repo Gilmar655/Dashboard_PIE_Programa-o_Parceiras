@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#081b3b">
   <meta name="description" content="Painel operacional PIE para acompanhar programações, aprovações, parceiras e PowerON.">
   <title>Painel PIE | Programação das Parceiras</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=20261018-2">
 </head>
 <body>
   <header class="topbar">
@@ -24,7 +24,7 @@
             <small id="clockDate">--/--/----</small>
           </div>
         </div>
-        <img src="assets/enel-brasil-logo.png" alt="Enel Brasil" class="enel-logo">
+        <img src="./enel-brasil-logo.png" alt="Enel Brasil" class="enel-logo">
       </div>
     </div>
   </header>
@@ -96,9 +96,11 @@
 
     <footer class="footer"><div><strong>PIE CONTROL</strong> <span>• Painel de apoio ao acompanhamento operacional</span></div><div>Fonte: aba PIE da planilha fornecida · <span id="footerData">65 registros</span></div><p>As informações representam a programação e os status registrados na base. Não comprovam execução concluída nem substituem a confirmação operacional. Em um repositório público, todos os dados publicados ficam acessíveis a terceiros.</p></footer>
   </main>
-  <script src="dados/programacoes.js"></script>
-  <script src="assets/excel.js"></script>
-  <script src="assets/charts.js"></script>
-  <script src="assets/app.js"></script>
+  <script>window.addEventListener('error',function(e){if(e.target && e.target.tagName==='SCRIPT'){document.getElementById('siteLoadError').hidden=false;}},true);</script>
+  <p id="siteLoadError" hidden role="alert" style="padding:14px 24px;color:#a71d39;background:#ffedf0;border-radius:10px">Não foi possível carregar os arquivos do painel. Confira se index.html, programacoes.js, app.js, charts.js, excel.js e styles.css estão na mesma pasta publicada.</p>
+  <script src="./programacoes.js?v=20261018-2"></script>
+  <script src="./excel.js?v=20261018-2"></script>
+  <script src="./charts.js?v=20261018-2"></script>
+  <script src="./app.js?v=20261018-2"></script>
 </body>
 </html>
