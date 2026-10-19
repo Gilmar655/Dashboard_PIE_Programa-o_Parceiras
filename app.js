@@ -63,7 +63,7 @@ function renderCommittee(rs){
 const ci=rs.filter(r=>r.decisaoComite==='SIM - COMITÊ');
 const totalChi=rs.reduce((sum,r)=>sum+(r.chi||0),0);
 const selectedChi=ci.reduce((sum,r)=>sum+(r.chi||0),0);
-const withGerador=rs.filter(r=>/viabilizar\\s+(?:instalação\\s+de\\s+)?gerador/i.test(r.solicitarGerador)).length;
+const withGerador=rs.filter(r=>/viabilizar\s+(?:instalação\s+de\s+)?gerador/i.test(r.solicitarGerador)).length;
 const pendentes=ci.filter(r=>r.status===statuses[2]).length;
 const items=[
  {title:'Para análise do comitê',value:fmtNum(ci.length),detail:'Registros sinalizados na coluna Decisão Comitê'},
