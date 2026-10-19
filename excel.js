@@ -28,11 +28,11 @@ function colIndex(s){let x=0;for(let c of s.toUpperCase())x=x*26+c.charCodeAt(0)
 function valuesFromSheet(xml,shared){
   // Leitura seletiva: planilhas com muitas linhas apenas formatadas não devem criar um milhão de linhas vazias.
   // Percorre os elementos de linha e só interpreta como XML as linhas que contêm valores reais.
-  const table=[],rx=/<row\\b[^>]*>[\\s\\S]*?<\\/row>/g;
+  const table=[],rx=/<row\b[^>]*>[\s\S]*?<\/row>/g;
   let match;
   while((match=rx.exec(xml))!==null){
     const source=match[0];
-    if(!/<(?:v|is)(?:[\\s>])/.test(source))continue;
+    if(!/<(?:v|is)(?:[\s>])/.test(source))continue;
     const doc=textXml('<sheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+source+'</sheet>');
     const row=localElements(doc,'row')[0],arr=[];
     if(!row)continue;
