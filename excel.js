@@ -15,7 +15,7 @@ const hdr=table[hIdx].map(norm),idx=HEADERS.map(h=>hdr.indexOf(norm(h)));const e
 for(let i=hIdx+1;i<table.length;i++){const row=table[i];if(!row||!row.some(v=>v!=null&&String(v).trim()))continue;let out={},pull=k=>idx[k]>=0?row[idx[k]]:null;KEYS.forEach((key,k)=>{out[key]=pull(k)});out.projeto=String(out.projeto??'').trim();if(!out.projeto)continue;
 ['descricao','status','tipoIntervencao','poweron','equipamento','regiao','contratada','solicitarGerador','observacao1','observacao2','decisaoComite'].forEach(k=>out[k]=String(out[k]??'').trim());out.data=normalDate(out.data);out.inicio=normalTime(out.inicio);out.fim=normalTime(out.fim);out.duracao=out.duracao==null||out.duracao===''?NaN:Number(String(out.duracao).replace(',','.'));out.chi=Number(String(out.chi??'').replace(',','.'))||0;
 if(!Number.isFinite(out.duracao)){if(/^\d\d:\d\d$/.test(out.inicio)&&/^\d\d:\d\d$/.test(out.fim)){const [h1,m1]=out.inicio.split(':').map(Number),[h2,m2]=out.fim.split(':').map(Number);out.duracao=((h2*60+m2)-(h1*60+m1))/60;}else out.duracao=0;}
-out.duracao=Math.round(out.duracao*100)/100;out.visivel=out.visivel==null?'':out.visivel;out.rowExcel=i+1;
+out.duracao=Math.round(out.duracao*100)/100;out.visivel=out.visivel==null?'':out.visivel;out.rowExcel=row.__rowExcel||i+1;
 if(!/^\d{4}-\d\d-\d\d$/.test(out.data))throw Error(`Data inválida na linha ${i+1}, projeto ${out.projeto}.`);
 rows.push(out);}
 if(!rows.length)throw Error('Nenhuma programação válida foi encontrada na planilha.');return rows;}
@@ -25,7 +25,33 @@ function localElements(doc,tag){return Array.from(doc.getElementsByTagNameNS('*'
 function textXml(blob){return new DOMParser().parseFromString(blob,'application/xml');}
 async function unzip(data){let dv=new DataView(data),eocd=-1;for(let i=dv.byteLength-22;i>=Math.max(0,dv.byteLength-65557);i--){if(dv.getUint32(i,true)===0x06054b50){eocd=i;break;}}if(eocd===-1)throw Error('O arquivo não é um XLSX/ZIP válido.');const count=dv.getUint16(eocd+10,true),off=dv.getUint32(eocd+16,true);let cursor=off,files={};for(let j=0;j<count;j++){if(dv.getUint32(cursor,true)!==0x02014b50)throw Error('Estrutura interna XLSX inválida.');let method=dv.getUint16(cursor+10,true),size=dv.getUint32(cursor+20,true),nameLen=dv.getUint16(cursor+28,true),extra=dv.getUint16(cursor+30,true),comment=dv.getUint16(cursor+32,true),local=dv.getUint32(cursor+42,true);let name=decode.decode(new Uint8Array(data,cursor+46,nameLen));cursor+=46+nameLen+extra+comment;if(name.endsWith('/'))continue;let nlen=dv.getUint16(local+26,true),elen=dv.getUint16(local+28,true),start=local+30+nlen+elen;let bytes=new Uint8Array(data,start,size);if(method===8){if(typeof DecompressionStream==='undefined')throw Error('Seu navegador não possui suporte à descompactação XLSX. Use CSV ou abra no Chrome/Edge atualizados.');const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'));files[name]=new Uint8Array(await new Response(stream).arrayBuffer());}else if(method===0){files[name]=bytes.slice()}else throw Error('Método ZIP não suportado: '+method);}return files;}
 function colIndex(s){let x=0;for(let c of s.toUpperCase())x=x*26+c.charCodeAt(0)-64;return x-1;}
-function valuesFromSheet(xml,shared){const table=[];const doc=textXml(xml);for(let row of localElements(doc,'row')){let n=Number(row.getAttribute('r'))||table.length+1,arr=[];for(const c of localElements(row,'c')){let address=c.getAttribute('r')||'',letters=address.match(/^[A-Z]+/);if(!letters)continue;const ix=colIndex(letters[0]),type=c.getAttribute('t');const v=localElements(c,'v')[0];let value=v?v.textContent:'';if(type==='s')value=shared[Number(value)]??'';else if(type==='inlineStr')value=localElements(c,'t').map(x=>x.textContent).join('');else if(type==='b')value=value==='1';else if(type==='e')value='';else if(value!==''&&type!=='str'&&Number.isFinite(Number(value)))value=Number(value);arr[ix]=value;}table[n-1]=arr;}return table.filter(Boolean);}
+function valuesFromSheet(xml,shared){
+  // Leitura seletiva: planilhas com muitas linhas apenas formatadas não devem criar um milhão de linhas vazias.
+  // Percorre os elementos de linha e só interpreta como XML as linhas que contêm valores reais.
+  const table=[],rx=/<row\\b[^>]*>[\\s\\S]*?<\\/row>/g;
+  let match;
+  while((match=rx.exec(xml))!==null){
+    const source=match[0];
+    if(!/<(?:v|is)(?:[\\s>])/.test(source))continue;
+    const doc=textXml('<sheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+source+'</sheet>');
+    const row=localElements(doc,'row')[0],arr=[];
+    if(!row)continue;
+    for(const c of localElements(row,'c')){
+      const address=c.getAttribute('r')||'',letters=address.match(/^[A-Z]+/);
+      if(!letters)continue;
+      const ix=colIndex(letters[0]),type=c.getAttribute('t'),v=localElements(c,'v')[0];
+      let value=v?v.textContent:'';
+      if(type==='s')value=shared[Number(value)]??'';
+      else if(type==='inlineStr')value=localElements(c,'t').map(x=>x.textContent).join('');
+      else if(type==='b')value=value==='1';
+      else if(type==='e')value='';
+      else if(value!==''&&type!=='str'&&Number.isFinite(Number(value)))value=Number(value);
+      arr[ix]=value;
+    }
+    if(arr.some(x=>x!==null&&x!==undefined&&String(x)!=='')){arr.__rowExcel=Number(row.getAttribute('r'))||table.length+1;table.push(arr);}
+  }
+  return table;
+}
 async function parseXlsx(file){const files=await unzip(await file.arrayBuffer());if(!files['xl/workbook.xml'])throw Error('Arquivo Excel não contém xl/workbook.xml.');const workbook=textXml(decode.decode(files['xl/workbook.xml']));const rels=files['xl/_rels/workbook.xml.rels']?textXml(decode.decode(files['xl/_rels/workbook.xml.rels'])):null;const relationships=new Map(localElements(rels,'Relationship').map(x=>[x.getAttribute('Id'),x.getAttribute('Target')]));const sheets=localElements(workbook,'sheet').map(x=>({name:x.getAttribute('name')||'',target:relationships.get(x.getAttribute('r:id'))}));const ordered=[...sheets.filter(s=>s.name.toLowerCase()==='pie'),...sheets.filter(s=>s.name.toLowerCase()!=='pie')];let shared=[];if(files['xl/sharedStrings.xml']){const xml=textXml(decode.decode(files['xl/sharedStrings.xml']));shared=localElements(xml,'si').map(si=>localElements(si,'t').map(x=>x.textContent).join(''));}
 let errors=[];for(const s of ordered){if(!s.target)continue;let path=s.target.startsWith('/')?s.target.slice(1):s.target.startsWith('xl/')?s.target:'xl/'+s.target.replace(/^\.\//,'');path=path.replace(/\/\.\//g,'/');if(!files[path])continue;try{return mapTable(valuesFromSheet(decode.decode(files[path]),shared));}catch(err){errors.push(s.name+': '+err.message);}}
 throw Error('Nenhuma aba com colunas PIE compatíveis. '+errors.join(' | '));}
